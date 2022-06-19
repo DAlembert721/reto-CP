@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.ddmu</groupId>
     <artifactId>retoCP</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <name>retoCP</name>
     <description>retoCP</description>
     <properties>
