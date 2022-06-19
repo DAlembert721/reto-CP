@@ -1,8 +1,6 @@
 FROM openjdk:11.0.7
-ARG JAR_FILE=target/reto-CP-*.jar
+ARG JAR_FILE=target/retoCP*.jar
 
-ENV JAVA_OPTS="-Xms64m -Xmx256m"
+COPY ${JAR_FILE} retoCP.jar
 
-COPY ${JAR_FILE} retp-CP.jar
-
-ENTRYPOINT java ${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom -server -jar reto-CP.jar
+CMD [ "sh", "-c", "java -Dserver.port=$PORT -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8 -XX:+UseContainerSupport -Djava.security.egd=file:/dev/./urandom -jar /retoCP.jar" ]
