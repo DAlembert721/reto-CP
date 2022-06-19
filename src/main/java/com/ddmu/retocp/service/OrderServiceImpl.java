@@ -52,6 +52,7 @@ public class OrderServiceImpl implements OrderService {
                         new ModelNotFoundException("Order", "OrderNumber", orderNumber));
         order.setQuantity(resource.getQuantity());
         order.setOrderNumber(resource.getOrderNumber());
+        order.setClient(resource.getClient());
         return orderRepository.save(order);
     }
 

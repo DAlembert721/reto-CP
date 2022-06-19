@@ -12,11 +12,11 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductRequest {
-    @NotNull
+    @NotNull(message = "The code field is required")
     private Long code;
-    @NotBlank
-    @Size(max = 200)
+    @NotBlank(message = "The name field is required")
+    @Size(max = 200, message = "The name field must be a max size of 200")
     private String name;
-    @NotNull
+    @NotNull(message = "The price field is required")
     private Long price;
 }

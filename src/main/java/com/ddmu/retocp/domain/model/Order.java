@@ -5,10 +5,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Data
 @Document(collection = "orders")
@@ -27,9 +27,10 @@ public class Order {
     @NotNull
     private Integer quantity;
 
-
-    @DBRef
-    private User client;
+    @NotNull
+    @Valid
+    @Field(name = "client")
+    private Client client;
 
 
 }

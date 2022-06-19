@@ -17,10 +17,11 @@ import java.util.stream.Collectors;
 public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public final ResponseEntity<ExceptionResponse> manageAllExceptions(Exception exception, WebRequest request){
+    public final ResponseEntity<ExceptionResponse> manageAllExceptions(Exception exception, WebRequest request) {
         ExceptionResponse response = new ExceptionResponse(LocalDateTime.now(), exception.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers,
                                                                   HttpStatus status, WebRequest request) {
@@ -29,14 +30,16 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
         ExceptionResponse response = new ExceptionResponse(LocalDateTime.now(), message, request.getDescription(false));
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
+
     @ExceptionHandler(ModelNotFoundException.class)
-    public ResponseEntity<ExceptionResponse> manageModelNotFoundException(ModelNotFoundException exception, WebRequest request){
+    public ResponseEntity<ExceptionResponse> manageModelNotFoundException(ModelNotFoundException exception, WebRequest request) {
         ExceptionResponse response = new ExceptionResponse(LocalDateTime.now(), exception.getMessage(),
                 request.getDescription(false));
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
+
     @ExceptionHandler(DuplicateKeyException.class)
-    public final ResponseEntity<ExceptionResponse> manageDuplicateKeyExceptions(DuplicateKeyException exception, WebRequest request){
+    public final ResponseEntity<ExceptionResponse> manageDuplicateKeyExceptions(DuplicateKeyException exception, WebRequest request) {
         ExceptionResponse response = new ExceptionResponse(LocalDateTime.now(), exception.getCause().getMessage().split("27017. ")[1], request.getDescription(false));
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }

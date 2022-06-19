@@ -36,24 +36,26 @@ public class OrdersController {
                 .collect(Collectors.toList());
         return new PageImpl<>(responses, pageable, responses.size());
     }
-
+    @Operation(summary = "Get an order", description = "Get an order by number")
     @GetMapping("/{orderNumber}")
     public OrderResponse getOrderByNumber(@PathVariable Long orderNumber) {
         return mapEntityToResponse(orderService.getOrderByNumber(orderNumber));
     }
 
-
+    @Operation(summary = "Create an order", description = "Create an order")
     @PostMapping("")
     public OrderResponse createOrder(@RequestBody @Valid OrderRequest request) {
         return mapEntityToResponse(orderService.createOrder(request.getProductCode(), mapRequestToEntity(request)));
     }
 
+    @Operation(summary = "Update an order", description = "Update an order")
     @PutMapping("")
     public OrderResponse editProduct(@RequestBody @Valid OrderRequest request){
         Order order = mapRequestToEntity(request);
         return mapEntityToResponse(orderService.editOrderByOrderNumber(request.getOrderNumber(), order));
     }
 
+    @Operation(summary = "Delete an order", description = "Delete an order")
     @DeleteMapping("/{orderNumber}")
     public ResponseEntity<?> deleteOrderByOrderNumber(@PathVariable Long orderNumber) {
         return orderService.deleteOrderByOrderNumber(orderNumber);

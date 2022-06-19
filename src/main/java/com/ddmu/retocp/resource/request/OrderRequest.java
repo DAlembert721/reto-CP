@@ -4,18 +4,21 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderRequest {
-    @NotNull
+    @NotNull(message = "The orderNumber field is required")
     private Long orderNumber;
-    @NotNull
+    @NotNull(message = "The productCode field is required")
     private Long productCode;
-    @NotNull
+    @NotNull(message = "The quantity field is required")
     private Integer quantity;
-    @NotNull
+
+    @NotNull(message = "The client field is required")
+    @Valid
     private ClientRequest client;
 }

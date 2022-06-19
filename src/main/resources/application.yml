@@ -8,4 +8,8 @@ cp:
   app:
     jwtSecret: CpRetoSecret
     jwtExpirationMs: 86400000
+    
+api:
+  version: 1.0
+  description: Esta api fue realizada a pedido de entrevista de CP
 

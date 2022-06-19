@@ -12,11 +12,12 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoginRequest {
-    @NotBlank
-    @Email
-    @Size(max = 50)
+    @NotBlank(message = "The email field is required")
+    @Email(message = "The email field must be a email format")
+    @Size(max = 50, message = "The email field must be a max size of 50")
     private String email;
-    @NotBlank
-    @Size(max = 120)
+
+    @NotBlank(message = "The email field is required")
+    @Size(max = 120, message = "The email field must be a max size of 120")
     private String password;
 }
