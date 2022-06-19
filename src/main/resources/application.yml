@@ -1,1 +1,11 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://RetoCPUser:RetoCPUserPass@clusterretocp.xemst.mongodb.net/reto-cp?retryWrites=true&w=majority
+      auto-index-creation: true
+
+cp:
+  app:
+    jwtSecret: CpRetoSecret
+    jwtExpirationMs: 86400000
 

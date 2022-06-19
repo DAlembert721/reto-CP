@@ -4,20 +4,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class ResourceNotFoundException extends RuntimeException {
-    public ResourceNotFoundException() {
+public class ModelNotFoundException extends RuntimeException {
+    public ModelNotFoundException() {
         super();
     }
 
-    public ResourceNotFoundException(String message) {
+    public ModelNotFoundException(String message) {
         super(message);
     }
 
-    public ResourceNotFoundException(String message, Throwable cause) {
+    public ModelNotFoundException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public ResourceNotFoundException(String resourceName, String fieldName, Object fieldValue) {
+    public ModelNotFoundException(String resourceName, String fieldName, Object fieldValue) {
         super(String.format("Resource %s not found for %s with value %s", resourceName, fieldName, fieldValue));
     }
 }
